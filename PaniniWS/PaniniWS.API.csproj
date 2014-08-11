@@ -141,6 +141,7 @@
     <Compile Include="Models\Album.cs" />
     <Compile Include="Models\AlbumPage.cs" />
     <Compile Include="Models\AlbumSticker.cs" />
+    <Compile Include="Models\StickerViewModel.cs" />
     <Compile Include="Models\UserAlbumSticker.cs" />
     <Compile Include="PaniniContext.cs" />
     <Compile Include="Models\UserModel.cs" />

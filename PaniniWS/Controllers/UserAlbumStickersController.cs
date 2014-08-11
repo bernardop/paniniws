@@ -67,6 +67,77 @@ namespace PaniniWS.Controllers
             return allStickers.AsQueryable();
         }
 
+        // POST: api/Albums/UpdateSticker
+        [Authorize]
+        [HttpPost]
+        [Route("UpdateSticker")]
+        public async Task<IHttpActionResult> UpdateSticker(StickerViewModel viewModel)
+        {
+            string userName = ClaimsPrincipal.Current.Identity.Name;
+
+            UserAlbumSticker stickerToUpdate = db.UserAlbumStickers.SingleOrDefault(uas => uas.UserAlbumStickerID == viewModel.UserAlbumStickerID);
+            if (stickerToUpdate != null)
+            {
+                stickerToUpdate.Have = viewModel.Have;
+                stickerToUpdate.HaveRepeated = viewModel.HaveRepeated;
+            }
+
+            db.UserAlbumStickers.Attach(stickerToUpdate);
+            db.Entry(stickerToUpdate).State = EntityState.Modified;
+
+            try
+            {
+                await db.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!UserAlbumStickerExists(viewModel.UserAlbumStickerID))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return StatusCode(HttpStatusCode.NoContent);
+        }
+
+        // GET: api/Albums/5/GetMissingStickersList
+        [Authorize]
+        [Route("{albumID:int}/GetMissingStickersList")]
+        public IQueryable<UserAlbumSticker> GetMissingStickersList(int albumID)
+        {
+            string userName = ClaimsPrincipal.Current.Identity.Name;
+            IdentityUser user = db.Users.Single(u => u.UserName.ToLower() == userName.ToLower());
+
+            List<UserAlbumSticker> missingStickers = db.UserAlbumStickers.Where(uas => uas.User.Id == user.Id && uas.AlbumSticker.AlbumPage.Album.AlbumID == albumID && !uas.Have)
+                                                                         .Include(uas => uas.AlbumSticker).ToList();
+
+            // Remove circular references
+            missingStickers.All(uas => { uas.User = null; return true; });
+
+            return missingStickers.AsQueryable();
+        }
+
+        // GET: api/Albums/5/GetRepeatedStickersList
+        [Authorize]
+        [Route("{albumID:int}/GetRepeatedStickersList")]
+        public IQueryable<UserAlbumSticker> GetRepeatedStickersList(int albumID)
+        {
+            string userName = ClaimsPrincipal.Current.Identity.Name;
+            IdentityUser user = db.Users.Single(u => u.UserName.ToLower() == userName.ToLower());
+
+            List<UserAlbumSticker> missingStickers = db.UserAlbumStickers.Where(uas => uas.User.Id == user.Id && uas.AlbumSticker.AlbumPage.Album.AlbumID == albumID && uas.HaveRepeated)
+                                                                         .Include(uas => uas.AlbumSticker).ToList();
+
+            // Remove circular references
+            missingStickers.All(uas => { uas.User = null; return true; });
+
+            return missingStickers.AsQueryable();
+        }
+
         //// GET: api/UserAlbumStickers/5
         //[ResponseType(typeof(UserAlbumSticker))]
         //public async Task<IHttpActionResult> GetUserAlbumSticker(int id)
