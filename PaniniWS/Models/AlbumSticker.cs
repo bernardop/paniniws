@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace PaniniWS.Models
+namespace PaniniWS.API.Models
 {
     public class AlbumSticker
     {

@@ -5,7 +5,7 @@ namespace PaniniWS.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<PaniniWS.PaniniContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<PaniniWS.API.PaniniContext>
     {
         public Configuration()
         {
@@ -13,7 +13,7 @@ namespace PaniniWS.Migrations
             ContextKey = "PaniniWS.PaniniContext";
         }
 
-        protected override void Seed(PaniniWS.PaniniContext context)
+        protected override void Seed(PaniniWS.API.PaniniContext context)
         {
             //  This method will be called after migrating to the latest version.
 

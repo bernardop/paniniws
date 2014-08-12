@@ -10,12 +10,12 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
 using System.Web.Http.Description;
-using PaniniWS;
-using PaniniWS.Models;
+using PaniniWS.API;
+using PaniniWS.API.Models;
 using System.Security.Claims;
 using Microsoft.AspNet.Identity.EntityFramework;
 
-namespace PaniniWS.Controllers
+namespace PaniniWS.API.Controllers
 {
     [RoutePrefix("api/Albums")]
     public class UserAlbumStickersController : ApiController
@@ -24,10 +24,10 @@ namespace PaniniWS.Controllers
 
         // GET: api/Albums
         [Authorize]
+        [HttpGet]
         [Route("")]
         public IQueryable<Album> GetAlbums()
         {
-            string userName = ClaimsPrincipal.Current.Identity.Name;
             return db.Albums;
         }
 

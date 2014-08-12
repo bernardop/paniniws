@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace PaniniWS.Models
+namespace PaniniWS.API.Models
 {
     public class UserModel
     {

@@ -1,18 +1,14 @@
 ﻿'use strict';
-app.controller('albumsController', ['$scope', function ($scope) {
+app.controller('albumsController', ['$scope', 'albumsService', function ($scope, albumsService) {
 
-    //$scope.message = "";
-    //
-    //$scope.getAlbums = function () {
-    //
-    //    albumsService.getAlbums().then(function (response) {
-    //
-    //        $scope.message = "You're good";
-    //
-    //    },
-    //    function (err) {
-    //        $scope.message = err.error_description;
-    //    });
-    //};
+    $scope.message = "Sup";
+    $scope.albums = [];
+    
+    albumsService.getAlbums().then(function (results) {
+        $scope.albums = results.data;
+    },
+    function (err) {
+        $scope.message = err.error_description;
+    });
 
 }]);

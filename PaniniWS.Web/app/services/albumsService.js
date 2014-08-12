@@ -5,8 +5,8 @@ app.factory('albumsService', ['$http', function ($http) {
     var albumsServiceFactory = {};
 
     var _getAlbums = function () {
-
-        return $http.get(serviceBase + 'api/useralbumstickers').then(function (results) {
+        
+        return $http.get(serviceBase + 'api/albums').then(function (results) {
             return results;
         });
     };
