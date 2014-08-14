@@ -1,29 +1,18 @@
 ﻿<div class="row">
-    <div class="col-md-2">
-        &nbsp;
-    </div>
-    <div class="col-md-8">
-        <table class="table table-striped table-bordered table-hover">
-            <thead>
-                <tr>
-                    <th>Album ID</th>
-                    <th>Name</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr data-ng-repeat="album in albums">
-                    <td>
-                        {{ album.albumID }}
-                    </td>
-                    <td>
-                        {{ album.name }}
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+
+    <div class="page-head">
+        <h1>Available Albums <small>Click on an album name to see stickers</small></h1>
     </div>
 
-    <div class="col-md-2">
-        &nbsp;
+    <div class="row">
+        <div class="col-md-4" data-ng-repeat="album in albums">
+            <div class="thumbnail">
+                <img src="{{ album.albumCoverFilePath }}" alt="{{ album.name }}" />
+                <div class="caption">
+                    <a href="#/albums/{{ album.albumID }}" class="btn btn-primary btn-block">{{ album.name }}</a>
+                </div>
+            </div>
+        </div>
     </div>
+
 </div>

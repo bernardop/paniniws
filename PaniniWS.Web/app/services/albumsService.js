@@ -1,7 +1,8 @@
 ﻿'use strict';
-app.factory('albumsService', ['$http', function ($http) {
+app.factory('albumsService', ['$http', 'ngAuthSettings', function ($http, ngAuthSettings) {
 
-    var serviceBase = 'http://localhost:5349/';
+    var serviceBase = ngAuthSettings.apiServiceBaseUri;
+    //var serviceBase = 'http://localhost:5349/';
     var albumsServiceFactory = {};
 
     var _getAlbums = function () {

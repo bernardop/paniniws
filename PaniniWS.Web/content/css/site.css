@@ -58,3 +58,6 @@ body {
         border-top-right-radius: 0;
     }
 
+.main-content {
+    padding-top: 50px;
+}

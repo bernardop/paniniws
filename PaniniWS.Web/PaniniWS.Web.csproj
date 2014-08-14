@@ -59,10 +59,13 @@
   <ItemGroup>
     <Content Include="app\controllers\associateController.js" />
     <Content Include="app\controllers\refreshController.js" />
+    <Content Include="app\controllers\stickersController.js" />
     <Content Include="app\controllers\tokensManagerController.js" />
+    <Content Include="app\services\stickersService.js" />
     <Content Include="app\services\tokensManagerService.js" />
     <Content Include="app\views\associate.html" />
     <Content Include="app\views\refresh.html" />
+    <Content Include="app\views\stickers.html" />
     <Content Include="app\views\tokens.html" />
     <Content Include="authComplete.html" />
     <Content Include="content\fonts\fontawesome-webfont.svg" />
@@ -98,6 +101,8 @@
     <Content Include="content\css\loading-bar.min.css" />
     <Content Include="content\css\site.css" />
     <Content Include="content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="content\images\albums\1.jpg" />
+    <Content Include="content\images\albums\2.jpg" />
     <Content Include="index.html" />
     <Content Include="scripts\angular-local-storage.min.js" />
     <Content Include="scripts\authComplete.js" />

@@ -22,6 +22,11 @@ app.config(function ($routeProvider) {
         templateUrl: "/app/views/albums.html"
     });
 
+    $routeProvider.when("/albums/:albumID", {
+        controller: "stickersController",
+        templateUrl: "/app/views/stickers.html"
+    });
+
     $routeProvider.when("/refresh", {
         controller: "refreshController",
         templateUrl: "/app/views/refresh.html"

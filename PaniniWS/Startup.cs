@@ -21,8 +21,10 @@ namespace PaniniWS.API
 
         public void Configuration(IAppBuilder app)
         {
-            ConfigureOAuth(app);
             HttpConfiguration config = new HttpConfiguration();
+
+            ConfigureOAuth(app);
+            
             WebApiConfig.Register(config);
             app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
             app.UseWebApi(config);
@@ -43,6 +45,10 @@ namespace PaniniWS.API
                 RefreshTokenProvider = new SimpleRefreshTokenProvider()
             };
 
+            // Token Generation
+            app.UseOAuthAuthorizationServer(OAuthServerOptions);
+            app.UseOAuthBearerAuthentication(OAuthBearerOptions);
+
             //Configure Google External Login
             googleAuthOptions = new GoogleOAuth2AuthenticationOptions()
             {
@@ -60,10 +66,6 @@ namespace PaniniWS.API
                 Provider = new FacebookAuthProvider()
             };
             app.UseFacebookAuthentication(facebookAuthOptions);
-
-            // Token generation
-            app.UseOAuthAuthorizationServer(OAuthServerOptions);
-            app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions());
         }
     }
 }
