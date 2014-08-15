@@ -102,6 +102,8 @@
     <Content Include="content\css\site.css" />
     <Content Include="content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="content\images\albums\1.jpg" />
+    <Content Include="content\images\albums\1\1.png" />
+    <Content Include="content\images\albums\1\placeholder.png" />
     <Content Include="content\images\albums\2.jpg" />
     <Content Include="index.html" />
     <Content Include="scripts\angular-local-storage.min.js" />
