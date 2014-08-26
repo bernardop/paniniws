@@ -27,6 +27,16 @@ app.config(function ($routeProvider) {
         templateUrl: "/app/views/stickers.html"
     });
 
+    $routeProvider.when("/albums/:albumID/missingstickers", {
+        controller: "missingStickersController",
+        templateUrl: "app/views/missing.html"
+    });
+
+    $routeProvider.when("/albums/:albumID/repeatedstickers", {
+        controller: "repeatedStickersController",
+        templateUrl: "app/views/repeated.html"
+    });
+
     $routeProvider.when("/refresh", {
         controller: "refreshController",
         templateUrl: "/app/views/refresh.html"

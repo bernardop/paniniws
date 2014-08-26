@@ -5,6 +5,7 @@ app.controller('stickersController', ['$scope', '$routeParams', 'stickersService
     $scope.stickers = [];
     $scope.albumPages = [];
     $scope.currentPage = 1;
+    $scope.currentAlbumID = $routeParams.albumID;
 
     $scope.filterByPageID = function (element) {
         return element.albumSticker.albumPage.albumPageID == $scope.currentPage ? true : false

@@ -58,13 +58,19 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\controllers\associateController.js" />
+    <Content Include="app\controllers\repeatedStickersController.js" />
     <Content Include="app\controllers\refreshController.js" />
+    <Content Include="app\controllers\missingStickersController.js" />
     <Content Include="app\controllers\stickersController.js" />
     <Content Include="app\controllers\tokensManagerController.js" />
+    <Content Include="app\services\repeatedStickersService.js" />
+    <Content Include="app\services\missingStickersService.js" />
     <Content Include="app\services\stickersService.js" />
     <Content Include="app\services\tokensManagerService.js" />
     <Content Include="app\views\associate.html" />
     <Content Include="app\views\refresh.html" />
+    <Content Include="app\views\repeated.html" />
+    <Content Include="app\views\missing.html" />
     <Content Include="app\views\stickers.html" />
     <Content Include="app\views\tokens.html" />
     <Content Include="authComplete.html" />
