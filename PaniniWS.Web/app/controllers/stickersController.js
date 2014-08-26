@@ -10,6 +10,15 @@ app.controller('stickersController', ['$scope', '$routeParams', 'stickersService
         return element.albumSticker.albumPage.albumPageID == $scope.currentPage ? true : false
     }
 
+    $scope.updateSticker = function (userAlbumStickerID, have, haveRepeated) {
+        
+        stickersService.updateSticker(userAlbumStickerID, have, haveRepeated).then(function (results) {
+        },
+        function (err) {
+            $scope.message = err.error_description;
+        });
+    }
+
     stickersService.getStickers($routeParams.albumID).then(function (results) {
         var stickers = results.data;
 

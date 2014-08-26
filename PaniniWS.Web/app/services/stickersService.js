@@ -11,7 +11,21 @@ app.factory('stickersService', ['$http', 'ngAuthSettings', function ($http, ngAu
         });
     };
 
+    var _updateSticker = function (userAlbumStickerID, have, haveRepeated) {
+        
+        var data = {
+            UserAlbumStickerID: userAlbumStickerID,
+            Have: have,
+            HaveRepeated: haveRepeated
+        };
+
+        return $http.post(serviceBase + 'api/albums/updatesticker', data).then(function (results) {
+            return results;
+        });
+    };
+
     stickersServiceFactory.getStickers = _getStickers;
+    stickersServiceFactory.updateSticker = _updateSticker;
 
     return stickersServiceFactory;
 
