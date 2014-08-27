@@ -1,3 +1,29 @@
-﻿<div class="col-md-1" data-ng-repeat="sticker in stickers">
-    <h4>{{ sticker.userAlbumStickerID }}</h4>
+﻿<div class="col-md-offset-2 col-md-8">
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            Repeated Stickers
+        </div>
+        <div class="panel-body">
+            <div class="btn-group btn-group-justified">
+                <a href="#/albums/{{ currentAlbumID }}" class="btn btn-primary">All Stickers</a>
+                <a href="javascript: window.print()" class="btn btn-primary">Print</a>
+            </div>
+        </div>
+        <table class="table table-condensed table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th class="col-md-4">Sticker Number</th>
+                    <th class="col-md-8">Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr data-ng-repeat="sticker in stickers">
+                    <td>{{ sticker.albumSticker.stickerNumber }}</td>
+                    <td>{{ sticker.albumSticker.description }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
 </div>

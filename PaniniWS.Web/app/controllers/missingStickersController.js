@@ -3,6 +3,7 @@ app.controller('missingStickersController', ['$scope', '$routeParams', 'missingS
 
     $scope.message = '';
     $scope.stickers = [];
+    $scope.currentAlbumID = $routeParams.albumID;
 
     missingStickersService.getMissingStickers($routeParams.albumID).then(function (results) {
         var stickers = results.data;

@@ -65,3 +65,13 @@ body {
 .albums-container {
     padding-top: 20px;
 }
+
+.sticker-details {
+    height: 265px;
+    margin-bottom: 20px;
+}
+
+.sticker-details .thumbnail {
+    min-height: 100%;
+    height: 100%;
+}
