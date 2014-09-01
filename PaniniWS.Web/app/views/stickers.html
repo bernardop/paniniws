@@ -24,7 +24,7 @@
                 <input ng-model="sticker.have" ng-change="updateSticker(sticker.userAlbumStickerID, sticker.have, sticker.haveRepeated)" type="checkbox" name="Have" id="Have" value="{{ sticker.have }}"> Have
             </label>
             <label class="checkbox-inline">
-                <input ng-model="sticker.haveRepeated" ng-change="updateSticker(sticker.userAlbumStickerID, sticker.have, sticker.haveRepeated)" type="checkbox" name="HaveRepeated" id="HaveRepeated" value="{{ sticker.haveRepeated }}"> Have Repeated
+                <input ng-model="sticker.haveRepeated" ng-change="updateSticker(sticker.userAlbumStickerID, sticker.have, sticker.haveRepeated)" type="checkbox" name="HaveRepeated" id="HaveRepeated" value="{{ sticker.haveRepeated }}" ng-disabled="!sticker.have"> Have Repeated
             </label>
         </div>
     </div>
