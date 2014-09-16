@@ -41,7 +41,7 @@ namespace PaniniWS.API.Controllers
             IdentityUser user = db.Users.Single(u => u.UserName.ToLower() == userName.ToLower());
 
             List<UserAlbumSticker> allStickers = new List<UserAlbumSticker>();
-            allStickers = db.UserAlbumStickers.Where(uas => uas.User.Id == user.Id).Include(uas => uas.AlbumSticker.AlbumPage).ToList();
+            allStickers = db.UserAlbumStickers.Where(uas => uas.User.Id == user.Id && uas.AlbumSticker.AlbumPage.Album.AlbumID == albumID).Include(uas => uas.AlbumSticker.AlbumPage).ToList();
             if (allStickers.Count == 0)
             {
                 List<AlbumSticker> albumStickers = db.Albums.Where(a => a.AlbumID == albumID).SelectMany(a => a.AlbumPages).SelectMany(ap => ap.AlbumStickers).ToList();
@@ -58,7 +58,7 @@ namespace PaniniWS.API.Controllers
                 }
                 db.SaveChanges();
 
-                allStickers = db.UserAlbumStickers.Where(uas => uas.User.Id == user.Id).Include(uas => uas.AlbumSticker.AlbumPage).ToList();
+                allStickers = db.UserAlbumStickers.Where(uas => uas.User.Id == user.Id && uas.AlbumSticker.AlbumPage.Album.AlbumID == albumID).Include(uas => uas.AlbumSticker.AlbumPage).ToList();
             }
 
             // Remove circular references
